@@ -6,7 +6,7 @@ namespace OnlineOrderFulfillmentOptimizer.Exceptions
     {
         public IReadOnlyList<Exception> InnerExceptions { get; private set; }
 
-        public ConcurrentValidationException(IReadOnlyList<Exception> innerExceptions)
+        public ConcurrentValidationException(string v, IReadOnlyList<Exception> innerExceptions)
         : base($"Multiple validation errors occurred: {innerExceptions.Count} exceptions.")
         {
             InnerExceptions = innerExceptions;
