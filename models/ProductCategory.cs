@@ -1,6 +1,9 @@
-public enum ProductCategory
+namespace OnlineOrderFulfillmentOptimizer.Models
 {
-    Technology,
-    Beauty,
-    HomeAppliance
+    public enum ProductCategory
+    {
+        Technology,
+        Beauty,
+        HomeAppliance
+    }
 }
