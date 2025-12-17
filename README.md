@@ -1,8 +1,8 @@
 # OnlineOrderFulfillmentOptimizer
 
 # Created by 
-Brayden Nickel
-Seth Garciano
+Brayden Nickel 748211
+Seth Garciano 918663
 Kyle Castillo - 904556
 
 # Project Description
@@ -57,6 +57,30 @@ Program.cs
 
 # Description of parallel component
 
+How the Parallel programming works is it validates multiple orders on multiple threads instead of validating an order one by one. When is it validating it is checking for exceptions and It adds the failed orders to a list and adds the validated orders to a valid order list. We tested to see if the parallelization was working by seeing our cpu usage with and without it
+
+avg cpu usage of 2-3%
+with parallelization 
+cpu usage jumps about 8-10%
+
+without parallelization jumps about 20%
+
 # Exception Handling Strategy
 
+some exceptions we include for our program were a
+	ConcurrentValidation to handle multiple errors in the threads
+	InvalidOrder with orders with wrong order IDs
+	NoFulFillmentPath when we cant complete an order
+	OutOfStock when the requested quantity is more then what we have
+	UnknownProduct when a product has unknown ID or name
+	Warehouse does not exist for a warehouse that doesn't have correct ID
+
+# Future Improvements
+
+Some things we could improve on in the future is further testing to ensure parallelization is working. Ensure all exceptions are being handled correctly 
+
+To take it further we could implement a database to store all of our products, orders and warehouse information so our data isn't hard coded in the program and implement a UI for the program so someone could use it instead of it being a simulation
+
 # Instructions to run the program
+
+run program.cs
