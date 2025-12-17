@@ -1,6 +1,10 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Linq.Expressions;
+using OnlineOrderFulfillmentOptimizer.Exceptions;
 
 namespace OnlineOrderFulfillmentOptimizer.Models
 {
@@ -21,52 +25,83 @@ namespace OnlineOrderFulfillmentOptimizer.Models
             if (orders == null || orders.Count == 0)
                 return new FulfillmentResult(plans, failures);
 
-        
-            //  PARALLELIZATION WOULD GO HERE
-        
-            //   - TryValidateOrder(order, out reason)
-            //   - TryValidateStockPossible(order, out reason)  (reads inventory totals)
-            //
-            // Example idea:
-            //   Parallel.ForEach(orders, order => { validate -> put into thread-safe validOrders/failures })
-            //
-            // Then AFTER that, do allocation sequentially.
-            //
-            // DO NOT parallelize allocation unless you add locks / careful synchronization.
-    
+            var validOrders = new ConcurrentBag<Order>();
+            var failureBag = new ConcurrentBag<OrderFailure>();
+            var unexpectedFailures = new ConcurrentBag<Exception>();
 
-            foreach (var order in orders)
+            Parallel.ForEach(orders, order =>
             {
-                // 1) validate order structure
-                //  SAFE to parallelize (read-only, no inventory changes)
-                if (!TryValidateOrder(order, out string reason))
+                try
                 {
-                    failures.Add(new OrderFailure(order?.OrderId ?? -1, reason));
-                    continue;
+                    TryValidateOrder(order, out string reason);
+                    TryValidateStockPossible(order, out string reason2);
+                    validOrders.Add(order);
                 }
-
-                // 2) validate inventory possible across ALL warehouses (no reservation yet)
-                //  SAFE to parallelize (read-only inventory checks)
-                if (!TryValidateStockPossible(order, out reason))
+                catch (InvalidOrderException ex) 
                 {
-                    failures.Add(new OrderFailure(order.OrderId, reason));
-                    continue;
+                    failureBag.Add(new OrderFailure(order?.OrderId ?? -1, ex.Message));
                 }
-
-                // 3) allocate efficiently (mutates inventory)
-                //  NOT safe to parallelize without locks because it subtracts inventory.
-                if (!TryAllocate(order, out var plan, out reason))
+                catch (NoFulfillmentPathException ex)
                 {
-                    failures.Add(new OrderFailure(order.OrderId, reason));
-                    continue;
+                    failureBag.Add(new OrderFailure(order.OrderId, ex.Message));
                 }
+                catch (OutOfStockException ex)
+                {
+                    failureBag.Add(new OrderFailure(order.OrderId, ex.Message));
+                }
+                catch (UnknownProductException ex)
+                {
+                    failureBag.Add(new OrderFailure(order.OrderId, ex.Message));
+                }
+                catch (WarehouseDoesNotExistException ex)
+                {
+                    failureBag.Add(new OrderFailure(order.OrderId, ex.Message));
+                }
+                catch (Exception ex)
+                {
+                    unexpectedFailures.Add(ex);
+                    failureBag.Add(new OrderFailure(order.OrderId, $"Unexpected error: {ex.Message}"));
+                }
+            });
+            
+            if (!unexpectedFailures.IsEmpty)
+                throw new ConcurrentValidationException("One or more unexpected errors occurred during order validation.", unexpectedFailures.ToList());
 
-                plans.Add(plan);
+                failures.AddRange(failureBag);
+                orders = validOrders.ToList();
+
+            foreach (var order in validOrders)
+            {
+                try
+                {
+                    if (!TryAllocate(order, out var plan, out string reason))
+                        throw new NoFulfillmentPathException(order.OrderId, reason);
+
+                    plans.Add(plan);
+                }
+                catch (NoFulfillmentPathException ex)
+                {
+                    failures.Add(new OrderFailure(ex.OrderId, ex.Message));
+                }
+                catch (WarehouseDoesNotExistException ex)
+                {
+                    failures.Add(new OrderFailure(order.OrderId, ex.Message));
+                }
+                catch (OutOfStockException ex)
+                {
+                    failures.Add(new OrderFailure(order.OrderId, ex.Message));
+                }
+                catch (UnknownProductException ex)
+                {
+                    failures.Add(new OrderFailure(order.OrderId, ex.Message));
+                }
+                catch (Exception ex)
+                {
+                    failures.Add(new OrderFailure(order.OrderId, $"Allocation error: {ex.Message}"));
+                }
             }
-
             return new FulfillmentResult(plans, failures);
         }
-
         // -------------------------
         // Validation (no exceptions)
         // -------------------------
@@ -75,34 +110,30 @@ namespace OnlineOrderFulfillmentOptimizer.Models
         {
             reason = "";
 
-            if (order == null)
+            try
             {
-                reason = "Order is null.";
-                return false;
-            }
+                if (order == null)
+                    throw new InvalidOrderException(-1, "Order is null.");
 
-            if (order.Items == null || order.Items.Count == 0)
-            {
-                reason = $"Order {order.OrderId} has no items.";
-                return false;
-            }
+                if (order.Items == null || order.Items.Count == 0)
+                    throw new InvalidOrderException(order.OrderId, "Order has no items.");
 
-            foreach (var kv in order.Items)
-            {
-                if (string.IsNullOrWhiteSpace(kv.Key))
+                foreach (var kv in order.Items)
                 {
-                    reason = $"Order {order.OrderId} has a blank product key.";
-                    return false;
+                    if (string.IsNullOrWhiteSpace(kv.Key))
+                        throw new InvalidOrderException(order.OrderId, "Order has a blank product key.");
+
+                    if (kv.Value <= 0)
+                        throw new InvalidOrderException(order.OrderId, $"Order has invalid qty for '{kv.Key}': {kv.Value}");
                 }
 
-                if (kv.Value <= 0)
-                {
-                    reason = $"Order {order.OrderId} has invalid qty for '{kv.Key}': {kv.Value}";
-                    return false;
-                }
+                return true;
             }
-
-            return true;
+            catch (InvalidOrderException ex)
+            {
+                reason = ex.Message;
+                return false;
+            }
         }
 
         // SAFE to parallelize (reads inventory only)
@@ -112,6 +143,16 @@ namespace OnlineOrderFulfillmentOptimizer.Models
 
             foreach (var (productKey, qty) in order.Items)
             {
+                try 
+                {
+                    if (_warehouses.All(w => GetAvailable(w, productKey) <= 0))
+                        throw new NoFulfillmentPathException(order.OrderId, $"Product '{productKey}' is not stocked in any warehouse.");
+                }
+                catch (NoFulfillmentPathException ex)
+                {
+                    reason = ex.Message;
+                    return false;
+                }
         
                 int total = _warehouses.Sum(w => GetAvailable(w, productKey));
                 if (total < qty)
@@ -137,6 +178,16 @@ namespace OnlineOrderFulfillmentOptimizer.Models
             var best = FindBestSingleWarehouse(order.Items);
             if (best != null)
             {
+                try 
+                {
+                    if (best == null)
+                        throw new NoFulfillmentPathException(order.OrderId, "No single warehouse can fulfill the order.");
+                }
+                catch (NoFulfillmentPathException ex)
+                {
+                    reason = ex.Message;
+                    return false;
+                }
                 ApplyReservation(best, order.Items);
 
                 plan = new FulfillmentPlan(order.OrderId, new List<ShipmentAllocation>
@@ -154,6 +205,16 @@ namespace OnlineOrderFulfillmentOptimizer.Models
     
         private Warehouse? FindBestSingleWarehouse(Dictionary<string, int> items)
         {
+            try 
+            {
+                if (_warehouses == null || _warehouses.Count == 0)
+                    throw new NoFulfillmentPathException(-1, "No warehouses available.");
+            }
+            catch (NoFulfillmentPathException)
+            {
+                return null;
+            }
+
             var candidates = _warehouses
                 .Where(w => items.All(kv => GetAvailable(w, kv.Key) >= kv.Value))
                 .ToList();
@@ -180,6 +241,16 @@ namespace OnlineOrderFulfillmentOptimizer.Models
             foreach (var (product, qtyNeeded) in order.Items)
             {
                 int need = qtyNeeded;
+                try 
+                {
+                    if (_warehouses.All(w => GetAvailableSnapshot(snapshot, w, product) <= 0))
+                        throw new NoFulfillmentPathException(order.OrderId, $"Product '{product}' is not stocked in any warehouse.");
+                }
+                catch (NoFulfillmentPathException ex)
+                {
+                    reason = ex.Message;
+                    return false;
+                }
 
                 foreach (var w in _warehouses.OrderByDescending(x => GetAvailableSnapshot(snapshot, x, product)))
                 {
@@ -257,7 +328,7 @@ namespace OnlineOrderFulfillmentOptimizer.Models
         }
     }
 
-    // Output models (no exceptions)
+    // Output models 
     public record ShipmentAllocation(string WarehouseId, Dictionary<string, int> Items);
     public record FulfillmentPlan(int OrderId, List<ShipmentAllocation> Shipments);
 
