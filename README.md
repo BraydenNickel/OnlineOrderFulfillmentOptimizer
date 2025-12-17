@@ -2,7 +2,5 @@
 
 # Created by 
 Brayden Nickel
-<<<<<<< HEAD
-seth garciano
-=======
->>>>>>> Kyle
+Seth Garciano
+Kyle Castillo
