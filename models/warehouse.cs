@@ -13,16 +13,15 @@ public class Warehouse
 
     public void AddProduct(Product product)
     {
-        if (!Inventory.ContainsKey(product.productId))
-        {
-            Inventory[product.productId] = 0;
-        }
-        Inventory[product.productId]+=product.quantity;
+        if (!Inventory.ContainsKey(product.ProductId))
+            Inventory[product.ProductId] = 0;
+
+        Inventory[product.ProductId] += product.Quantity;
     }
 
-    public bool HasInventory(string product, int quantity)
+    public bool HasInventory(string productId, int quantity)
     {
-        return Inventory.ContainsKey(product.productId) && Inventory[product.productId] >= quantity;
+        return Inventory.ContainsKey(productId) && Inventory[productId] >= quantity;
     }
 
     public void SubtractFromInventory(string product, int quantity)

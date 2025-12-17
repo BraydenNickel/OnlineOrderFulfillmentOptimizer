@@ -3,12 +3,40 @@
   "WorkspaceRootPath": "C:\\Users\\Fire\\Desktop\\OnlineOrderFulfillmentOptimizer\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Fire\\Desktop\\OnlineOrderFulfillmentOptimizer\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Fire\\Desktop\\OnlineOrderFulfillmentOptimizer\\models\\fulfillmentengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:models\\fulfillmentengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Fire\\Desktop\\OnlineOrderFulfillmentOptimizer\\README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Fire\\Desktop\\OnlineOrderFulfillmentOptimizer\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Fire\\Desktop\\OnlineOrderFulfillmentOptimizer\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Fire\\Desktop\\OnlineOrderFulfillmentOptimizer\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Fire\\Desktop\\OnlineOrderFulfillmentOptimizer\\models\\ProductCategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:models\\ProductCategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Fire\\Desktop\\OnlineOrderFulfillmentOptimizer\\models\\warehouse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:models\\warehouse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Fire\\Desktop\\OnlineOrderFulfillmentOptimizer\\OnlineOrderFulfillmentOptimizer.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:OnlineOrderFulfillmentOptimizer.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Fire\\Desktop\\OnlineOrderFulfillmentOptimizer\\.gitattributes||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.gitattributes||{3B902123-F8A7-4915-9F01-361F908088D0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,30 +46,120 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ProductCategory.cs",
+              "DocumentMoniker": "C:\\Users\\Fire\\Desktop\\OnlineOrderFulfillmentOptimizer\\models\\ProductCategory.cs",
+              "RelativeDocumentMoniker": "models\\ProductCategory.cs",
+              "ToolTip": "C:\\Users\\Fire\\Desktop\\OnlineOrderFulfillmentOptimizer\\models\\ProductCategory.cs",
+              "RelativeToolTip": "models\\ProductCategory.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-17T08:37:00.792Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "OnlineOrderFulfillmentOptimizer.csproj",
+              "DocumentMoniker": "C:\\Users\\Fire\\Desktop\\OnlineOrderFulfillmentOptimizer\\OnlineOrderFulfillmentOptimizer.csproj",
+              "RelativeDocumentMoniker": "OnlineOrderFulfillmentOptimizer.csproj",
+              "ToolTip": "C:\\Users\\Fire\\Desktop\\OnlineOrderFulfillmentOptimizer\\OnlineOrderFulfillmentOptimizer.csproj",
+              "RelativeToolTip": "OnlineOrderFulfillmentOptimizer.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-12-17T08:32:24.973Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "order.cs",
+              "DocumentMoniker": "C:\\Users\\Fire\\Desktop\\OnlineOrderFulfillmentOptimizer\\models\\order.cs",
+              "RelativeDocumentMoniker": "models\\order.cs",
+              "ToolTip": "C:\\Users\\Fire\\Desktop\\OnlineOrderFulfillmentOptimizer\\models\\order.cs",
+              "RelativeToolTip": "models\\order.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-17T05:40:01.193Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "warehouse.cs",
+              "DocumentMoniker": "C:\\Users\\Fire\\Desktop\\OnlineOrderFulfillmentOptimizer\\models\\warehouse.cs",
+              "RelativeDocumentMoniker": "models\\warehouse.cs",
+              "ToolTip": "C:\\Users\\Fire\\Desktop\\OnlineOrderFulfillmentOptimizer\\models\\warehouse.cs",
+              "RelativeToolTip": "models\\warehouse.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAgwBMAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-17T05:39:58.736Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": ".gitattributes",
+              "DocumentMoniker": "C:\\Users\\Fire\\Desktop\\OnlineOrderFulfillmentOptimizer\\.gitattributes",
+              "RelativeDocumentMoniker": ".gitattributes",
+              "ToolTip": "C:\\Users\\Fire\\Desktop\\OnlineOrderFulfillmentOptimizer\\.gitattributes",
+              "RelativeToolTip": ".gitattributes",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-12-17T05:39:57.17Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "product.cs",
+              "DocumentMoniker": "C:\\Users\\Fire\\Desktop\\OnlineOrderFulfillmentOptimizer\\models\\product.cs",
+              "RelativeDocumentMoniker": "models\\product.cs",
+              "ToolTip": "C:\\Users\\Fire\\Desktop\\OnlineOrderFulfillmentOptimizer\\models\\product.cs",
+              "RelativeToolTip": "models\\product.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-17T05:39:56.159Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "fulfillmentengine.cs",
+              "DocumentMoniker": "C:\\Users\\Fire\\Desktop\\OnlineOrderFulfillmentOptimizer\\models\\fulfillmentengine.cs",
+              "RelativeDocumentMoniker": "models\\fulfillmentengine.cs",
+              "ToolTip": "C:\\Users\\Fire\\Desktop\\OnlineOrderFulfillmentOptimizer\\models\\fulfillmentengine.cs",
+              "RelativeToolTip": "models\\fulfillmentengine.cs",
+              "ViewState": "AgIAAPMAAAAAAAAAAAAAAAcBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-17T04:06:21.315Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Fire\\Desktop\\OnlineOrderFulfillmentOptimizer\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\Fire\\Desktop\\OnlineOrderFulfillmentOptimizer\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAADoAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-17T00:39:49.111Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "README.md",
               "DocumentMoniker": "C:\\Users\\Fire\\Desktop\\OnlineOrderFulfillmentOptimizer\\README.md",
               "RelativeDocumentMoniker": "README.md",
               "ToolTip": "C:\\Users\\Fire\\Desktop\\OnlineOrderFulfillmentOptimizer\\README.md",
               "RelativeToolTip": "README.md",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
               "WhenOpened": "2025-12-17T00:39:31.855Z",
               "EditorCaption": ""

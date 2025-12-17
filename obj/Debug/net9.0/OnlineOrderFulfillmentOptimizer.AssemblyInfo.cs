@@ -14,11 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OnlineOrderFulfillmentOptimizer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-<<<<<<< HEAD
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+606c8a33dd9dc76c757edb2377057e1f3c9126f1")]
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b0b8e93d8216a43a464a5c9c56d71e5d36908d1a")]
->>>>>>> Kyle
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c6621a393aa463b31e08de2c50efc3d035290a4c")]
 [assembly: System.Reflection.AssemblyProductAttribute("OnlineOrderFulfillmentOptimizer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OnlineOrderFulfillmentOptimizer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
