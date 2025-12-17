@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OnlineOrderFulfillmentOptimizer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bb09a1a356692fb2f77db88405f2b9a0af057c09")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+606c8a33dd9dc76c757edb2377057e1f3c9126f1")]
 [assembly: System.Reflection.AssemblyProductAttribute("OnlineOrderFulfillmentOptimizer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OnlineOrderFulfillmentOptimizer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
