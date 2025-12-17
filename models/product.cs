@@ -1,41 +1,44 @@
 using System;
 using System.Collections.Generic;
 
-public class Product
+namespace OnlineOrderFulfillmentOptimizer.Models
 {
-    public static readonly Dictionary<ProductCategory, int> _categoryCounters = new Dictionary<ProductCategory, int>();
-
-    public string ProductId { get; private set; }
-    public string Name { get; set; }
-    public int Quantity { get; set; }
-    public ProductCategory Category { get; }
-
-    public Product(string name, int quantity, ProductCategory category)
+    public class Product
     {
-        Name = name;
-        Quantity = quantity;
-        Category = category;
-        GenerateProductId();
-    }
+        public static readonly Dictionary<ProductCategory, int> _categoryCounters = new Dictionary<ProductCategory, int>();
 
-    private void GenerateProductId()
-    {
-        if (!_categoryCounters.ContainsKey(Category))
+        public string ProductId { get; private set; }
+        public string Name { get; set; }
+        public int Quantity { get; set; }
+        public ProductCategory Category { get; }
+
+        public Product(string name, int quantity, ProductCategory category)
         {
-            _categoryCounters[Category] = 0;
+            Name = name;
+            Quantity = quantity;
+            Category = category;
+            GenerateProductId();
         }
 
-        _categoryCounters[Category]++;
-
-        string prefix = Category switch
+        private void GenerateProductId()
         {
-            ProductCategory.Technology => "T",
-            ProductCategory.Beauty => "B",
-            ProductCategory.HomeAppliance => "H",
-            _ => "U"
-        };
+            if (!_categoryCounters.ContainsKey(Category))
+            {
+                _categoryCounters[Category] = 0;
+            }
 
-        ProductId = $"{prefix}{_categoryCounters[Category]:D4}";
+            _categoryCounters[Category]++;
+
+            string prefix = Category switch
+            {
+                ProductCategory.Technology => "T",
+                ProductCategory.Beauty => "B",
+                ProductCategory.HomeAppliance => "H",
+                _ => "U"
+            };
+
+            ProductId = $"{prefix}{_categoryCounters[Category]:D4}";
+        }
+
     }
-
- }
+}

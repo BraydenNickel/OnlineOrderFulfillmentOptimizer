@@ -1,34 +1,37 @@
 using System.Collections.Generic;
 
-public class Warehouse
+namespace OnlineOrderFulfillmentOptimizer.Models
 {
-    public string Id { get; set; }
-    public Dictionary<string, int> Inventory { get; set; }
-
-    public Warehouse(string id)
+    public class Warehouse
     {
-        Id = id;
-        Inventory = new Dictionary<string, int>();
-    }
+        public string Id { get; set; }
+        public Dictionary<string, int> Inventory { get; set; }
 
-    public void AddProduct(Product product)
-    {
-        if (!Inventory.ContainsKey(product.ProductId))
-            Inventory[product.ProductId] = 0;
-
-        Inventory[product.ProductId] += product.Quantity;
-    }
-
-    public bool HasInventory(string productId, int quantity)
-    {
-        return Inventory.ContainsKey(productId) && Inventory[productId] >= quantity;
-    }
-
-    public void SubtractFromInventory(string product, int quantity)
-    {
-        if (HasInventory(product, quantity))
+        public Warehouse(string id)
         {
-            Inventory[product] -= quantity;
+            Id = id;
+            Inventory = new Dictionary<string, int>();
+        }
+
+        public void AddProduct(Product product)
+        {
+            if (!Inventory.ContainsKey(product.ProductId))
+                Inventory[product.ProductId] = 0;
+
+            Inventory[product.ProductId] += product.Quantity;
+        }
+
+        public bool HasInventory(string productId, int quantity)
+        {
+            return Inventory.ContainsKey(productId) && Inventory[productId] >= quantity;
+        }
+
+        public void SubtractFromInventory(string product, int quantity)
+        {
+            if (HasInventory(product, quantity))
+            {
+                Inventory[product] -= quantity;
+            }
         }
     }
 }
