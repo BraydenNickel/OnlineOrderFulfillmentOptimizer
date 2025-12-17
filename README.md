@@ -14,6 +14,47 @@ The program was coded using the C# language. It was decided to use C# for its sc
 
 # System Design and Overview
 
+Exception handling files:
+ConcurrentValidationException.cs
+|-Wrapping unexpected errors during the parallel validations
+
+InvalidOrderException.cs
+|- Thrown for null orders, no items, blank product keys, or invalid quantities
+
+NoFulFilmentPathException.cs
+|- Thrown for when an order cant be fulfill the order ie: no stock or no allocation path
+
+OutOfStockException.cs
+|- Thrown when it does not met the requested quantity of the items ordered
+
+UnknownProductException.cs
+|- Thrown when an order references a product that isn’t recognized
+
+WarehouseDoesNotExistException.cs
+|-hrown as a safety check if allocation references a warehouse that doesn’t exist. 
+
+Models contains the following classes:
+Order.cs
+|-Stores order ID and requested items
+
+Warehouse.cs
+|-Stores warehouse ID and the inventory of each warehouse
+
+Product.cs
+|-Stores the product name and type
+
+FufillmentEngine.cs
+|-Validate order
+  |-Validate inventory
+    |-Assign Allocation Order Efficiently 
+
+Main output File:
+Program.cs
+|-Initialize the sample data
+  |- Calls FufillmentEngine
+     |- Process the return from FufillmentEngine
+	|-Display the results
+
 # Description of parallel component
 
 # Exception Handling Strategy
